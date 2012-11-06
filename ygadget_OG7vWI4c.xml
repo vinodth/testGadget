@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+  <Module xmlns:yap="http://www.yahoo.com/ns/yap">
+    <ModulePrefs
+       title="Edgeworld"
+       author="Viximo"
+       author_email="opensocial-support@viximo.com"
+       screenshot="http://cdn1.viximo.com/assets/yahoo-images/edgeworld_yahoo_300X250.jpg"
+       thumbnail="http://cdn1.viximo.com/assets/yahoo-images/edgeworld_yahoo_64X64.gif"
+       icon="http://cdn1.viximo.com/assets/yahoo-images/edgeworld_yahoo_64X64.gif"
+       description="Build and defend your base from hostile forces in this game from Kabam. Rule the universe, or face annihilation!"
+       
+  category="Entertainment-Games"
+
+      >
+      <Icon>http://cdn1.viximo.com/assets/yahoo-images/edgeworld_yahoo_64X64.gif</Icon>
+      <Require feature="opensocial-0.8" />
+      <Require feature="dynamic-height"/>
+      <Require feature="views"/>
+      
+  <yap:Extension name="yap.gadgets.YahooComIconUrl">http://cdn1.viximo.com/assets/yahoo-images/edgeworld_yahoo_20X20.gif</yap:Extension>
+
+  <yap:Extension name="yap.gadgets.ShortDescription">Build and defend your base from hostile forces in this game from Kabam. Rule the universe, or face annihilation!</yap:Extension>
+  <yap:Extension name="yap.gadgets.ScreenshotUrl">http://cdn1.viximo.com/assets/yahoo-images/edgeworld_yahoo_300X250.jpg</yap:Extension>
+  <yap:Extension name="yap.gadgets.ApplicationIconUrl">http://cdn1.viximo.com/assets/yahoo-images/edgeworld_yahoo_64X64.gif</yap:Extension>
+
+    </ModulePrefs>
+    
+    
+  <Content type="html" view="YahooSmallView,Preview">
+    <![CDATA[
+      <yml:swf src="http://cdn1.viximo.com/assets/yahoo-images/edgeworld_yahoo_195X185.swf" loop="true" width="195" height="185" />
+    ]]>
+  </Content>
+  <Content type="html" view="YahooSmallView">
+    <![CDATA[
+      <yml:a view="canvas">Play Edgeworld</yml:a>
+    ]]>
+  </Content>
+  <Content type="html" view="Preview">
+    <![CDATA[
+      <yml:customize>Play Edgeworld</yml:customize>
+    ]]>
+  </Content>
+
+  <Content type="html" view="canvas">
+      <![CDATA[
+      
+       <script src="http://api.viximo.com/javascripts/api/viximo.js" type="text/javascript"></script>
+
+       <script type="text/javascript">
+         viximo.yahooInit(
+          'viximo-container',
+          'yahoo',
+          'edgeworld',
+          {
+           
+           complete: function(os_user, os_friends) {
+             
+           }
+          }
+         );
+       </script>
+
+       <div id="viximo-container"></div>
+      ]]>
+  </Content>
+  <Content type="html" view="canvas">
+    <![CDATA[
+      <style>
+        #viximo-container { height: 1500px }
+      </style>
+    ]]>
+  </Content>
+<Category name="Entertainment-Games"><Game><Hidden>true</Hidden><MinPlayer>1</MinPlayer><MaxPlayer>1</MaxPlayer><DisplayName>Edgeworld</DisplayName><TypeOfGame>yap</TypeOfGame><EntityType>game</EntityType><IdentityFacet>true</IdentityFacet><Delete>false</Delete><AppId>OG7vWI4c</AppId><Image><Description></Description><URL>http://cdn1.viximo.com/assets/yahoo-images/edgeworld_yahoo_20X20.gif</URL></Image><ScreenShotList><Image></Image></ScreenShotList><CoverImage><Image></Image></CoverImage><Provider><ProviderYId>Viximo</ProviderYId></Provider></Game></Category>
+  </Module>

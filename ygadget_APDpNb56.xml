@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module xmlns:yap="http://www.yahoo.com/ns/yap">
+<!--
+	Vegas World Yap XML
+    Created by Flowplay Inc. on 09/12/2012.
+    Copyright Flowplay Inc. 2012. All rights reserved.
+-->
+    <ModulePrefs title="Vegas World" description="Enter Vegas World, a rich and fun virtual world where you play the most addicting games and WIN! Play casino style games such as Multiplayer Slot Machines, Video Poker, Multiplayer Poker, Texas Hold&amp;#39;em, Blackjack and many other free casino-style games. Don&amp;#39;t forget to get the amazing Charms which boost up your winnings! Select your Vegas style from over 30,000 virtual goods and get the party started with your friends in lounges, dance clubs, pool areas, and a virtual hotel! Play. Party. Win!" category="Entertainment-Games" category2="Entertainment">
+                 <Icon>http://cdne-main.vegasworld.com/i/vg/t/favicon.gif</Icon>
+        <Locale lang="en" country="us"/>
+        <yap:Extension name="yap.gadgets.ShortDescription">Play Games. Meet People. Look Good.</yap:Extension> <!-- Max: 128 chars -->
+        <yap:Extension name="yap.gadgets.ApplicationIconUrl">http://cdne-main.vegasworld.com/i/vg/partners/yahoo/logo.png</yap:Extension>
+        <yap:Extension name="yap.gadgets.YahooComIconUrl">http://cdne-main.vegasworld.com/i/vg/partners/yahoo/favicon.png</yap:Extension>
+        <yap:Extension name="yap.gadgets.ScreenshotUrl">http://cdne-main.vegasworld.com/i/vg/partners/yahoo/screenshot.jpg</yap:Extension>
+        <yap:Extension name="yap.gadgets.CreatorImageUrl">http://cdne-main.vegasworld.com/i/vg/partners/yahoo/fplogo.jpg</yap:Extension>
+        <yap:Extension name="yap.gadgets.CreatorWebsiteUrl">http://www.flowplay.com</yap:Extension>
+        <yap:Extension name="yap.gadgets.TouUrl">http://web2.vegasworld.com/vg/terms.jsp</yap:Extension>
+        <yap:Extension name="yap.gadgets.PrivacyUrl">http://web2.vegasworld.com/vg/linkpage.jsp?page=privacy&amp;env=ourworld&amp;locale=en</yap:Extension>
+        <yap:Extension name="yap.gadgets.Tags"/> <!-- Tags, comma separated -->
+
+		<Require feature="opensocial-0.9"/>
+		<Require feature="opensocial-data"/>
+        <Require feature="yap.feature.classic"/>
+
+    </ModulePrefs>
+
+    <!-- The content of this CDATA will render in Yahoo Small View. -->
+    <Content type="html" view="YahooSmallView, default">
+        <h1>Vegas World small view!</h1>
+    </Content>
+
+    <!-- The content of this section will render in Canvas View. -->
+    <Content type="html" view="YahooFullView, canvas" href="http://web2.vegasworld.com/vg/yahooAuthenticate?env=yap">
+		<span id="game">Please wait while we load Vegas World...</span>
+    </Content>
+
+    <!-- The content of this CDATA will render if no other content sections are applicable. -->
+    <Content type="html">
+    </Content>
+
+<Category name="Entertainment-Games"><Game><Hidden>true</Hidden><MinPlayer>1</MinPlayer><MaxPlayer>1</MaxPlayer><DisplayName>Vegas World</DisplayName><TypeOfGame>yap</TypeOfGame><EntityType>game</EntityType><IdentityFacet>true</IdentityFacet><Delete>false</Delete><AppId>APDpNb56</AppId><Image><Description></Description><URL>http://cdne-main.vegasworld.com/i/vg/partners/yahoo/favicon.png</URL></Image><ScreenShotList><Image></Image></ScreenShotList><CoverImage><Image></Image></CoverImage><Provider><ProviderYId>ottoflowplay</ProviderYId></Provider></Game></Category></Module>
