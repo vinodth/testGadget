@@ -3,7 +3,7 @@
   <ModulePrefs
             author="Bigpoint"
             title="Farmerama"
-            category="Entertainment-Games"
+            category="Entertainment"
             description="Trade in your city life for a taste of the country. Run your own homestead, till your own fields and raise your own cattle. Keep trespassers off your land: This is your farm now! Life is hectic on the farm: There are lots of animals and crops to tend to, not to mention neighbors to shoot the breeze with. Out in the boondocks, community comes first!"
             author_email="opensocial1@bigpoint.net"
             icon="http://opensocial.bigpoint.com/images/08/games/171/teaser/appfavicon.jpg"
@@ -865,7 +865,7 @@ html, body
       </script>
     ]]>
   </Content>
-<Category name="Entertainment-Games"><Game><Hidden>true</Hidden><MinPlayer>1</MinPlayer><MaxPlayer>1</MaxPlayer><DisplayName>Farmerama</DisplayName>
+<Category name="Entertainment"><Game><Hidden>true</Hidden><MinPlayer>1</MinPlayer><MaxPlayer>1</MaxPlayer><DisplayName>Farmerama</DisplayName>
 <TypeOfGame>yap</TypeOfGame><EntityType>game</EntityType><IdentityFacet>true</IdentityFacet><Delete>false</Delete>
 <AppId>lmhvk87c</AppId><Image><Description></Description>
 <URL>http://opensocial.bigpoint.com/images/08/games/171/teaser/appfavicon.jpg</URL></Image><ScreenShotList>
