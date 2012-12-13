@@ -866,4 +866,3 @@ html, body
     ]]>
   </Content>
 <Category name="Entertainment-Games"><Game><Hidden>true</Hidden><MinPlayer>1</MinPlayer><MaxPlayer>1</MaxPlayer><DisplayName>Farmerama</DisplayName><TypeOfGame>yap</TypeOfGame><EntityType>game</EntityType><IdentityFacet>true</IdentityFacet><Delete>false</Delete><AppId>lmhvk87c</AppId><Image><Description></Description><URL>http://opensocial.bigpoint.com/images/08/games/171/teaser/appfavicon.jpg</URL></Image><ScreenShotList><Image></Image></ScreenShotList><CoverImage><Image></Image></CoverImage><Provider><ProviderYId>bpopensocial</ProviderYId></Provider></Game></Category></Module>
-</Module>
