@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module xmlns:yap="http://www.yahoo.com/ns/yap">
+  <ModulePrefs author="Bigpoint" title="Farmerama" category="Entertainment-Games" description="Trade in your city life for a taste of the country. Run your own homestead, till your own fields and raise your own cattle. Keep trespassers off your land: This is your farm now! Life is hectic on the farm: There are lots of animals and crops to tend to, not to mention neighbors to shoot the breeze with. Out in the boondocks, community comes first!" author_email="opensocial1@bigpoint.net" icon="http://opensocial.bigpoint.com/images/08/games/171/teaser/appfavicon.jpg">
+    <AllowedDomain name="opensocial.bigpoint.com"/>
+    <AllowedDomain name="secure-opensocial.bigpoint.net"/>
+    <AllowedDomain name="facebook-public-bpdevsys-busdev.bigpoint.net"/>
+    <Require feature="yap.feature.classic"/>
+    <Require feature="opensocial-0.8"/>
+
+    <Icon>http://opensocial.bigpoint.com/images/08/games/171/teaser/appfavicon.jpg</Icon>
+    <Locale lang="en" country="us"/>
+     <!-- Shorter description. Max: 128 chars -->
+    <yap:Extension name="yap.gadgets.ShortDescription">Come on down to the farm and enjoy country living!</yap:Extension>
+    <!-- Application Icon, 64x64 -->
+    <yap:Extension name="yap.gadgets.ApplicationIconUrl">http://opensocial.bigpoint.com/images/08/games/171/teaser/appicon-yahoo.png</yap:Extension>
+    <!-- Icon to be displayed at Yahoo.com, 20x20, .gif DEPRECATED: This extension is no longer used by Yahoo.com -->
+    <yap:Extension name="yap.gadgets.YahooComIconUrl">http://opensocial.bigpoint.com/images/08/games/171/teaser/yahoo-icon.gif</yap:Extension>
+    <!-- -Screenshot preview image, 300x250 -->
+    <yap:Extension name="yap.gadgets.ScreenshotUrl">http://opensocial.bigpoint.com/images/08/games/171/teaser/preview-yahoo.jpg</yap:Extension>
+    <!-- Your company logo, 256x256 -->
+    <yap:Extension name="yap.gadgets.CreatorImageUrl"/>
+    <!-- Your website -->
+    <yap:Extension name="yap.gadgets.CreatorWebsiteUrl">http://bigpoint.com/</yap:Extension>
+    <!-- Your terms of use -->
+    <yap:Extension name="yap.gadgets.TouUrl">http://bigpoint.com/termsofuse/</yap:Extension>
+    <!-- Your privacy policy -->
+    <yap:Extension name="yap.gadgets.PrivacyUrl">http://bigpoint.com/privacypolicy/</yap:Extension>
+    <!-- Tags, comma separated -->
+    <yap:Extension name="yap.gadgets.Tags"/>
+  </ModulePrefs>
+  <Content view="YahooSmallView, default" type="html">
+    <![CDATA[
+  	<style>.teaserImage
+{
+    height: 250px;
+    width: 300px;
+    background-color: black;
+}
+.teaserImage a
+{
+    position: absolute;
+    display: block;
+    width:100%;
+    height:100%;
+}
+.legal_links{
+	background:black;
+	bottom:0px;
+	padding-bottom:2px;
+	position:absolute;
+	right:2px;
+	color:white;
+}
+.legal_links a{
+	color:white;
+}</style>
+
+				           <div class="teaserImage profile farmerama yahoo en" style="background: transparent url(http://opensocial.bigpoint.com/images/08/games/171/teaser/profile-yahoo.jpg) no-repeat">
+                            <yml:a view="canvas"></yml:a>
+                          </div>
+        
+		
+    ]]>
+  </Content>
+
+  <Content view="YahooFullView" type="html">
+    <![CDATA[
+
+          <div style="display:none">
+      <yml:share>
+          <yml:friend-selector name="to" multiple="true" size="10" />
+          <input type="submit" value="Share with your friends!">
+      </yml:share>
+      </div>
+      
+            <script type="text/javascript" src="http://opensocial.bigpoint.com/app/yahoo/farmerama.php?method=remoteip.get"></script>
+      <script type="text/javascript" src="http://opensocial.bigpoint.com/js/lib/jquery-1.4.2.min.js"></script>
+      <script type="text/javascript" src="http://opensocial.bigpoint.com/js/08/bpos/ModelPersons.class.js"></script>
+      <script type="text/javascript" src="http://opensocial.bigpoint.com/js/08/bpos/Person.class.js"></script>
+      <script type="text/javascript" src="http://opensocial.bigpoint.com/js/08/bpos/ControllerOpenSocial.class.js?v=201011221437"></script>
+      <script type="text/javascript" src="http://opensocial.bigpoint.com/js/08/bpos/SocialBoxView_Ticker.class.js?v=201011221432"></script>
+      <script type="text/javascript" src="http://opensocial.bigpoint.com/js/08/bpos/SocialBoxView_FriendsWithApp.class.js"></script>
+      <script type="text/javascript" src="http://opensocial.bigpoint.com/js/08/bpos/SocialBoxView_FriendsWithoutApp.class.js"></script>
+      <script type="text/javascript" src="http://opensocial.bigpoint.com/js/08/bpos/SocialBoxContentViewManager.class.js"></script>
+      <script type="text/javascript" src="http://opensocial.bigpoint.com/js/08/bpos/SocialBoxNavigationItem.class.js"></script>
+      <script type="text/javascript" src="http://opensocial.bigpoint.com/js/08/bpos/SocialBoxNavigation.class.js"></script>
+      <script type="text/javascript" src="http://opensocial.bigpoint.com/js/08/bpos/SocialBox.class.js?2"></script>
+      <script type="text/javascript" src="http://opensocial.bigpoint.com/js/08/bpos/yahoo/OpenSocialRequest.class.js?v=201012081434"></script>
+<style type="text/css">
+#GameTopBorder      { font-size: 0px; background-repeat: no-repeat; }
+#GameLeftBorder     { float: left; background-repeat: no-repeat; }
+#GameMain           { background-repeat: no-repeat; float: left; position: relative;}
+#GameRightBorder    { background-repeat: no-repeat; float: left; }
+#GameBottomBorder   { clear:both; font-size: 0px; background-repeat: no-repeat; }
+
+#GameMain #GameAccessArea { position: absolute; font-family: tahoma; color: #FFF; z-index: 99; }
+#GameMain #GameAccessArea #GameAccessContainer { margin-left:25px; }
+
+#ErrorArea {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    height: 100%;
+    background: url(http://opensocial.bigpoint.com/images/08/application/error.png);
+}
+#ErrorArea #ErrorBox {
+    position: relative;
+    background-color: #FFF;
+    height: auto;
+    width:373px;
+    margin-left:50%;
+    top:30%;
+    left: -186px;
+
+    font-family: verdana, arial;
+    font-size:9pt;
+    color: white;
+    border: 1px solid #121212;
+}
+
+#ErrorArea #ErrorBox #ErrorBoxInner{
+    padding-left:50px;
+    padding-right:25px;
+    padding-bottom:20px;
+    background: #303030 url(http://opensocial.bigpoint.com/images/08_socialbox/error_bg.jpg) no-repeat;
+    border: 1px solid #808080;
+}
+
+#ErrorArea #ErrorBox #ErrorBoxInner ul{
+    margin:0;
+    padding: 0;
+    padding-top:10px;
+    list-style-type: none;
+}
+
+#ErrorArea #ErrorBox #ErrorBoxInner ul li a{
+    color: white;
+}
+
+#ErrorArea #ErrorBox #ErrorBoxInner ul li a:hover{
+    text-decoration:none;
+    color: #808080;
+}
+
+#ErrorArea #ErrorBox #ErrorBoxInner .close
+{
+    position:absolute;
+    width:18px;
+    height:17px;
+    background: url(http://opensocial.bigpoint.com/images/08_socialbox/notify_close.png) no-repeat;
+    right:5px;
+    top:4px;
+    cursor: pointer;
+}
+
+#ErrorArea #ErrorBox #ErrorBoxInner h2
+{
+    color:red;
+    font-weight:bold;
+    padding-right:20px;
+    font-size: 12pt;
+}
+
+#GameAccessArea .Register     #Switcher {display:block;}
+#GameAccessArea .Register     #Register {display:block;}
+#GameAccessArea .Register     #LinkAccounts {display:none;}
+#GameAccessArea .Register     #Login {display:none;}
+#GameAccessArea .LinkAccounts #Switcher {display:block;}
+#GameAccessArea .LinkAccounts #Register {display:none;}
+#GameAccessArea .LinkAccounts #LinkAccounts {display:block;}
+#GameAccessArea .LinkAccounts #Login {display:none;}
+#GameAccessArea .Login        #Switcher {display:none;}
+#GameAccessArea .Login        #Register {display:none;}
+#GameAccessArea .Login        #LinkAccounts {display:none;}
+#GameAccessArea .Login        #Login {display:block;}
+
+#Switcher { clear: both; width: 245px; height: 45px; margin: 0px 4px;}
+#Switcher  { cursor:pointer; float:left; }
+#Switcher .Left { height: 45px; width: 50%; }
+#Switcher .Right { height: 45px; width: 50%; }
+
+#Register {
+    padding: 8px 15px 8px 15px;
+    height: 230px;
+    clear: both;
+}
+#LinkAccounts {
+    padding: 8px 15px 8px 15px;
+    height: 230px;
+    clear: both;
+}
+#Login {
+    padding: 60px 15px 8px 15px;
+    height: 150px;
+    clear: both;
+}
+
+.Headline { font-weight: bold; font-size: 14px; margin-bottom: 7px; }
+.Line { margin-top: 5px; margin-bottom: 10px; height: 1px; width: 99%; font-size:1px; }
+.Lable { font-size: 10px; font-weight: bold; border-bottom: 2px solid #A3E0FF; }
+#GameAccessContainer   Select,
+#GameAccessContainer   Input {
+    border:0;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 10px;
+    height: 16px;
+}
+#GameAccessContainer  .AGB {
+    font-size: 11px;
+    line-height: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 9px;
+}
+
+#GameAccessContainer  .AGB #privacyInfoText{
+	background:#222;
+	margin-left:210px;
+	margin-top:-100px;
+	padding:10px;
+	position:absolute;
+	width:200px;
+}
+
+#GameAccessContainer  .AGB Input {
+    width: auto;
+    display: inline;
+    height: auto;
+    margin: 0;
+    margin-right: 5px;
+    border:0;
+    position: relative;
+    top: 3px;
+}
+#GameAccessContainer  .AGB a {
+    color: white;
+}
+
+.Button {
+    width: auto;
+    height: auto;
+    bottom: 0px;
+    text-align: center;
+    margin-top:5px;
+}
+.Button span {
+    cursor: pointer;
+    height: 31px;
+    display: block;
+    width: inherit;
+    margin: auto;
+    line-height: 31px;
+    font-weight: bold;
+}#ApplicationContainer {
+    width:  756px;
+}
+#GameContainer {
+    height: 458px;
+}
+#GameTopBorder {
+    width: 756px; height: 3px;
+    background-image: url(http://opensocial.bigpoint.com/images/08/games/171/game_border_top.gif);
+}
+#GameLeftBorder {
+    width: 3px; height: 452px;
+    background-image: url(http://opensocial.bigpoint.com/images/08/games/171/game_border_left.gif);
+}
+#GameMain {
+    width: 750px; height: 452px;
+    background-image: url(http://opensocial.bigpoint.com/images/08/games/171/game_background_en.jpg);
+}
+#GameRightBorder {
+    width: 3px; height:452px;
+    background-image: url(http://opensocial.bigpoint.com/images/08/games/171/game_border_right.gif);
+}
+#GameBottomBorder {
+    width: 756px; height: 3px;
+    background-image: url(http://opensocial.bigpoint.com/images/08/games/171/game_border_bottom.gif);
+}
+
+#GameAccessArea div.Register {
+    margin-top: 132px;
+    height: 296px;
+    width: 255px;
+    background-image: url(http://opensocial.bigpoint.com/images/08/games/171/game_login_register_background2_en.jpg);
+}
+
+#GameAccessArea div.LinkAccounts {
+    margin-top: 132px;
+    height: 296px;
+    width: 255px;
+    background-image: url(http://opensocial.bigpoint.com/images/08/games/171/game_login_link_background_en.jpg);
+}
+#GameAccessArea div.Login {
+    margin-top: 220px;
+    height: 218px;
+    width: 255px;
+    background-image: url(http://opensocial.bigpoint.com/images/08/games/171/game_login_background_en.jpg);
+}
+
+#Register {
+    padding: 8px 15px 8px 15px;
+    height: 230px;
+    clear: both;
+}
+#LinkAccounts {
+    padding: 8px 15px 8px 15px;
+    height: 230px;
+    clear: both;
+}
+#Login {
+    padding: 60px 15px 8px 15px;
+    height: 150px;
+    clear: both;
+}
+
+#Switcher div.Left { height: 45px; width: 50%; }
+#Switcher div.Right { height: 45px; width: 49%; }
+div.Headline { color: #EF5016; }
+div.Line { background-color: #FFF; }
+div.Lable { border-bottom: 2px solid #EF5016; }
+#GameAccessContainer div div Select,
+#GameAccessContainer div div Input { border-bottom: 1px solid #AAA; }
+div.Button span { background-color: #1F1F1F; border: 2px solid #EF5016; }/*
+    Document   : SocialBox.css
+    Created on : 18.03.2010, 18:57:29
+    Author     : alexmilde
+    Description:
+*/
+
+/*
+    position absolute is neccessary for ie6 in quirks mode
+*/
+
+/*
+
+TESTING
+
+*/
+/*
+html, body
+{
+   width:100%;
+   height:100%;
+   margin:0;
+   padding:0;
+   background-color: black;
+}
+
+.mainContainer
+{
+    position: relative;
+    margin-left:50%;
+    left: -375px;
+    width:750px;
+}
+
+.mainContainer .appContainer
+{
+    width: 750px;
+    height: 140px;
+    background-color: red;
+}
+*/
+
+
+.socialBox img
+{
+    margin:0;
+    padding:0;
+    border:0;
+}
+
+.socialBox
+{
+    position: relative;
+    top:20px;
+    width:100%;
+    font-family: Arial;
+    font-size: 11pt;
+    color: #fff;
+}
+
+.socialBox .floatLeft
+{
+    float: left;
+}
+
+.socialBox .floatRight
+{
+    float: right;
+}
+
+.socialBox a
+{
+    outline:none;
+    text-decoration: none;
+    color: #fff;
+}
+
+.socialBox a:hover
+{
+    color: #ccc;
+}
+
+/*
+    NAVI -----------------------------------------------------------------------
+*/
+
+.socialBox .navi
+{
+    font-size: 12pt;
+    margin-bottom: 10px;
+}
+
+.socialBox .navi ul
+{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.socialBox .navi li
+{
+    display: block;
+    margin-right:10px;
+    float: left;
+}
+
+.socialBox .navi li span.corner_left
+{
+    float:left;
+    width: 6px;
+    height: 29px;
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/navi_default_left.png);
+}
+
+.socialBox .navi li.over  span.corner_left
+{
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/navi_over_left.png);
+}
+
+.socialBox .navi li.active  span.corner_left
+{
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/navi_active_left.png);
+}
+
+.socialBox .navi li span.corner_right
+{
+    float:left;
+    width: 6px;
+    height: 29px;
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/navi_default_right.png);
+}
+
+.socialBox .navi li.over span.corner_right
+{
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/navi_over_right.png);
+}
+
+.socialBox .navi li.active span.corner_right
+{
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/navi_active_right.png);
+}
+
+.socialBox .navi li span.txt
+{
+    height: 29px;
+    float:left;
+    padding-left:10px;
+    padding-right:10px;
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/navi_default_bg.png);
+}
+
+
+.socialBox .navi li a
+{
+    display:block;
+    margin-top:5px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+}
+
+.socialBox .navi li.over span.txt
+{
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/navi_over_bg.png);
+}
+
+.socialBox .navi li.active span.txt
+{
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/navi_active_bg.png);
+}
+
+/*
+    CONTENT VIEWS --------------------------------------------------------------
+*/
+
+.socialBox .contentViews
+{
+    padding-top:16px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-bottom:16px;
+    background-color: #282828;
+    border-bottom: 2px solid #6c6c6c;
+    border-right: 2px solid #3d3d3d;
+}
+
+/*
+    TICKER VIEW ----------------------------------------------------------------
+*/
+
+.socialBox .contentViews .View_Ticker
+{
+
+    /*
+    background-color: #ff0;
+    */
+}
+
+.socialBox .contentViews .View_Ticker .ticker_wrapper
+{
+    background:#252525 url(http://opensocial.bigpoint.com/images/08_socialbox/gradient_news.gif) repeat-x;
+
+    margin-bottom:10px;
+    /*
+    margin-bottom:10px;
+    */
+    border-bottom:1px solid #7e7e7e;
+}
+
+
+
+.socialBox .contentViews .View_Ticker .ticker_wrapper .txt
+{
+    padding:10px;
+}
+
+.socialBox .contentViews .View_Ticker .ticker_wrapper .icons
+{
+    height:45px;
+
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/gradient_icon.gif);
+    background-repeat: repeat-x;
+}
+
+/*
+.socialBox .contentViews .View_Ticker .ticker_wrapper .noicons
+{
+    height:45px;
+}
+*/
+
+
+.socialBox .contentViews .View_Ticker .ticker_wrapper .icons div.post
+{
+    float:left;
+    height: 43px;
+    width:27px;
+    margin-left:10px;
+    cursor: pointer;
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/icon_postToWall_default.gif);
+}
+
+.socialBox .contentViews .View_Ticker .ticker_wrapper .icons div.post:hover
+{
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/icon_postToWall_over.gif);
+}
+
+
+.socialBox .contentViews .View_Ticker .ticker_wrapper .icons div.post.success
+{
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/icon_postToWall_success.gif);
+}
+
+.socialBox .contentViews .View_Ticker .ticker_wrapper .icons div.notify
+{
+    float:left;
+    height:43px;
+    width:27px;
+    margin-right:10px;
+    margin-left:10px;
+    cursor: pointer;
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/icon_notify_default.gif);
+}
+
+.socialBox .contentViews .View_Ticker .ticker_wrapper .icons div.notify:hover
+{
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/icon_notify_over.jpg);
+}
+
+/*
+    FRIEND WITH APP VIEW -------------------------------------------------------
+*/
+
+.socialBox .contentViews .View_FriendsWithApp
+{
+}
+
+.socialBox .contentViews .View_FriendsWithApp .margeRight
+{
+    margin-right:2%;
+}
+
+.socialBox .contentViews .View_FriendsWithApp .friend
+{
+    position: relative;
+    width: 49%;
+    float: left;
+    margin-bottom:20px;
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/gradient_friends.gif);
+    border-bottom:1px solid #7e7e7e;
+}
+
+.socialBox .contentViews .View_FriendsWithApp .imgContainer
+{
+    float:left;
+    padding:8px;
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/gradient_photo.gif);
+}
+
+.socialBox .contentViews .View_FriendsWithApp .imgContainer .imgContainerInner
+{
+    width:80px;
+    height:60px;
+    background-repeat: no-repeat;
+}
+
+
+.socialBox .contentViews .View_FriendsWithApp .friendInfo
+{
+    position:absolute;
+    float:right;
+    right:0px;
+    bottom:10px;
+    width:220px;
+}
+
+.socialBox .contentViews .View_FriendsWithApp .friendInfo ul
+{
+    position:relative;
+    margin:0;
+    padding:0;
+    list-style-type: none;
+}
+
+.socialBox .contentViews .View_FriendsWithApp .friendInfo li
+{
+    margin:0;
+    padding:0;
+}
+
+
+/*
+    FRIEND WITHOUT APP VIEW ----------------------------------------------------
+*/
+
+.socialBox .contentViews .View_FriendsWithoutApp
+{
+}
+
+.socialBox .contentViews .View_FriendsWithoutApp .margeRight
+{
+    margin-right:2%;
+}
+
+.socialBox .contentViews .View_FriendsWithoutApp .friend
+{
+    position: relative;
+    width: 49%;
+    float: left;
+    margin-bottom:20px;
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/gradient_friends.gif);
+    border-bottom:1px solid #7e7e7e;
+}
+
+.socialBox .contentViews .View_FriendsWithoutApp .imgContainer
+{
+    float:left;
+    padding:8px;
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/gradient_photo.gif);
+}
+
+.socialBox .contentViews .View_FriendsWithoutApp .imgContainer .imgContainerInner
+{
+    width:80px;
+    height:60px;
+    background-repeat: no-repeat;
+}
+
+
+.socialBox .contentViews .View_FriendsWithoutApp .friendInfo
+{
+    position:absolute;
+    left:110px;
+    width: 175px;
+    bottom:10px;
+}
+
+.socialBox .contentViews .View_FriendsWithoutApp .friendInfo ul
+{
+    position:relative;
+    margin:0;
+    padding:0;
+    list-style-type: none;
+}
+
+.socialBox .contentViews .View_FriendsWithoutApp .friendInfo li
+{
+    margin:0;
+    padding:0;
+}
+
+.socialBox .contentViews .View_FriendsWithoutApp .invite
+{
+    float:right;
+    display:block;
+    width:57px;
+    height:80px;
+    cursor: pointer;
+    background-image: url(http://opensocial.bigpoint.com/images/08_socialbox/icon_invite_default.jpg);
+}
+
+.socialBox .dropDownOuter
+{
+    position: absolute;
+    top:50px;
+    left:50%;
+    margin-left: -200px;
+    width: 373px;
+    /*
+    height: 573px;
+    */
+    padding:1px;
+    background-color: #121212;
+}
+
+.socialBox .dropDown
+{
+    position: relative;
+    padding: 0px;
+    padding-left: 50px;
+    padding-bottom: 25px;
+    border: 1px solid grey;
+    background: #303030 url(http://opensocial.bigpoint.com/images/08_socialbox/notify_bg.jpg) no-repeat;
+}
+
+.socialBox .dropDown .close
+{
+    position:absolute;
+    width:18px;
+    height:17px;
+    background: url(http://opensocial.bigpoint.com/images/08_socialbox/notify_close.png) no-repeat;
+    right:5px;
+    top:4px;
+    cursor: pointer;
+}
+
+.socialBox .dropDown h2
+{
+    padding-right:20px;
+    font-size: 16pt;
+}
+
+.socialBox .dropDown .naviElem
+{
+    padding-top:20px;
+    padding-right:20px;
+    float:left;
+}
+
+
+.socialBox .dropDown .naviElem span.corner_left
+{
+    width:3px;
+    height:19px;
+    float:left;
+    background: url(http://opensocial.bigpoint.com/images/08_socialbox/notify_btn_left_default.png) no-repeat;
+}
+
+.socialBox .dropDown .naviElem span.text
+{
+    height:19px;
+    padding-left:5px;
+    padding-right:5px;
+    float:left;
+    background: url(http://opensocial.bigpoint.com/images/08_socialbox/notify_btn_bg_default.png) repeat-x;
+}
+
+.socialBox .dropDown .naviElem span.corner_right
+{
+    height:19px;
+    width:3px;
+    float:left;
+    background: url(http://opensocial.bigpoint.com/images/08_socialbox/notify_btn_right_default.png) no-repeat;
+}
+
+.socialBox .imprint
+{
+    margin-top:8px;
+    margin-left:16px;
+    font-size: 9pt;
+
+}.socialBox .contentViews .View_Ticker .ticker_wrapper .icons div.notify { display: none !important; }
+.socialBox .contentViews .View_Ticker .ticker_wrapper .icons div.post { margin-left: 0 !important; }
+</style>
+
+      <div id="main">&nbsp;</div>
+      <script language="javascript">
+        gadgets.util.registerOnLoadHandler(function(){
+            var prefs = new gadgets.Prefs();
+            var BpAppCfg = {"projectId":171,"projectName":"farmerama","container":"yahoo","appCfg":{"hasTicker":true,"hasAppFriends":true,"hasAllFriends":true,"hasHelp":true},"appUrl":"http:\/\/opensocial.bigpoint.com\/app\/yahoo\/farmerama.php","imgRoot":"http:\/\/opensocial.bigpoint.com\/images\/","appEventsUrl":"http:\/\/opensocial.bigpoint.com\/callbacks\/yahoo\/farmerama.php","localeXMLPath":"http:\/\/opensocial.bigpoint.com\/lang\/yahoo\/farmerama\/"};
+                BpAppCfg['remoteAddr'] = window.REMOTE_ADDR;
+                BpAppCfg['osLang'    ] = prefs.getLang();
+                BpAppCfg['osCountry' ] = prefs.getCountry();
+                var params = {};
+                    params[gadgets.io.RequestParameters.METHOD]        = gadgets.io.MethodType.POST;
+                    params[gadgets.io.RequestParameters.CONTENT_TYPE]  = gadgets.io.ContentType.TEXT;
+                    params[gadgets.io.RequestParameters.AUTHORIZATION] = gadgets.io.AuthorizationType.SIGNED;
+
+                var url  = BpAppCfg.appUrl;
+                    url += '?'
+                    url += gadgets.io.encodeValues({
+                            'method'     : 'application.init',
+                            'remote_addr': BpAppCfg.remoteAddr,
+                            'osLang'     : BpAppCfg['osLang'],
+                            'osCountry'  : BpAppCfg.osCountry,
+                            'signed'     : 1,
+                            'nocache'    : new Date().getTime()
+                           });
+
+			   gadgets.io.makeRequest(url, function(response) {
+					document.getElementById('main').innerHTML = response.text;
+                    scriptRunner = document.getElementById('ScriptRunner');
+                    if (scriptRunner) {
+                        eval(scriptRunner.innerHTML);
+                    }
+                }, params);
+
+            window.BpAppCfg = BpAppCfg;
+        });
+      </script>
+    ]]>
+  </Content>
+    
+    <Category name="Entertainment-Games">
+          <Game>
+                  <Hidden>true</Hidden>
+                  <MinPlayer>1</MinPlayer>
+                  <MaxPlayer>1</MaxPlayer>
+                  <DisplayName>Farmerama</DisplayName>
+                  <TypeOfGame>yap</TypeOfGame>
+                  <EntityType>game</EntityType>
+                  <IdentityFacet>true</IdentityFacet>
+                  <Delete>false</Delete>  
+                  <AppId>lmhvk87c</AppId>
+                  <Image>
+                          <Description></Description>
+                          <URL>http://opensocial.bigpoint.com/images/08/games/171/teaser/appfavicon.jpg</URL>
+                  </Image>
+                  <ScreenShotList>
+                          <Image></Image>
+                  </ScreenShotList>
+                  <CoverImage>
+                         <Image></Image>
+                  </CoverImage>
+                  <Provider>
+                       <ProviderYId>yosgamma_test_account202</ProviderYId>
+                 </Provider>
+         </Game>
+    </Category>
+    
+</Module>
